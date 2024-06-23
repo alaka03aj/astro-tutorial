@@ -1,5 +1,15 @@
 ---
+const PageTitle = "About Me";
 
+const identity = {
+  firstName: "Alaka",
+  country: "A J",
+  occupation: "Student",
+  hobbies: ["photography", "music", "drawing"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro"];
+const finished = true;
 ---
 
 <html lang="en">
@@ -8,13 +18,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{PageTitle}</title>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <h1>My Astro Site</h1>
-    <h1>About Me</h1>
+    <h1>{PageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>
@@ -26,5 +36,21 @@
       This site will update as I complete more of the tutorial, so keep checking
       back and see how my journey is going!
     </p>
+    <p>Here are a few facts about me:</p>
+    My name is {identity.firstName}. I live in {identity.country} and I am a {
+      identity.occupation
+    }.
+    <p>Here are a few of my hobbies:</p>
+    <ul>
+      {
+        identity.hobbies.length >= 1 &&
+          identity.hobbies.map((hobby) => <li>{hobby}</li>)
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+    {finished && <p>That's all about adding dynamic content to my page!</p>}
   </body>
 </html>
